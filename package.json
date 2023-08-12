@@ -1,5 +1,5 @@
 {
-  "name": "@examples/next-websockets-starter",
+  "name": "next-websocket-prisma-mysql",
   "version": "10.37.1",
   "private": true,
   "engines": {
@@ -28,11 +28,11 @@
     "lint-fix": "pnpm lint --fix",
     "test-dev": "cross-env APP_ENV=test start-server-and-test dev 3000 test",
     "test-start": "cross-env APP_ENV=test WS_URL=ws://localhost:3000 start-server-and-test start 3000 test",
-    "test": "playwright test",
-    "postinstall": "prisma generate"
+    "test": "playwright test"
   },
   "prisma": {
-    "seed": "tsx prisma/seed.ts"
+    "seed": "tsx prisma/seed.ts",
+    "schema": "prisma/schema.prisma"
   },
   "prettier": {
     "printWidth": 80,

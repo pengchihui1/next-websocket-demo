@@ -189,38 +189,16 @@ export default function IndexPage() {
         <section className="flex w-full flex-col bg-gray-800 md:w-72">
           <div className="flex-1 overflow-y-hidden">
             <div className="flex h-full flex-col divide-y divide-gray-700">
-              <header className="p-4">
-                <h1 className="text-3xl font-bold text-gray-50">
-                  tRPC WebSocket starter
-                </h1>
-                <p className="text-sm text-gray-400">
-                  Showcases WebSocket + subscription support
-                  <br />
-                  <a
-                    className="text-gray-100 underline"
-                    href="https://github.com/trpc/examples-next-prisma-starter-websockets"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    View Source on GitHub
-                  </a>
-                </p>
-              </header>
               <div className="hidden flex-1 space-y-6 overflow-y-auto p-4 text-gray-400 md:block">
                 <article className="space-y-2">
-                  <h2 className="text-lg text-gray-200">Introduction</h2>
+                  <h2 className="text-lg text-gray-200">介绍</h2>
                   <ul className="list-inside list-disc space-y-2">
-                    <li>Open inspector and head to Network tab</li>
-                    <li>All client requests are handled through WebSockets</li>
-                    <li>
-                      We have a simple backend subscription on new messages that
-                      adds the newly added message to the current state
-                    </li>
+                    <li>登入后可进行简单的交流</li>
                   </ul>
                 </article>
                 {userName && (
                   <article>
-                    <h2 className="text-lg text-gray-200">User information</h2>
+                    <h2 className="text-lg text-gray-200">用户情况</h2>
                     <ul className="space-y-2">
                       <li className="text-lg">
                         You&apos;re{' '}
@@ -234,7 +212,7 @@ export default function IndexPage() {
                         />
                       </li>
                       <li>
-                        <button onClick={() => signOut()}>Sign Out</button>
+                        <button onClick={() => signOut()}>登出</button>
                       </li>
                     </ul>
                   </article>
@@ -256,8 +234,8 @@ export default function IndexPage() {
                 {isFetchingPreviousPage
                   ? 'Loading more...'
                   : hasPreviousPage
-                  ? 'Load More'
-                  : 'Nothing more to load'}
+                    ? 'Load More'
+                    : 'Nothing more to load'}
               </button>
               <div className="space-y-4">
                 {messages?.map((item) => (
@@ -312,28 +290,3 @@ export default function IndexPage() {
   );
 }
 
-/**
- * If you want to statically render this page
- * - Export `appRouter` & `createContext` from [trpc].ts
- * - Make the `opts` object optional on `createContext()`
- *
- * @link https://trpc.io/docs/ssg
- */
-// export const getStaticProps = async (
-//   context: GetStaticPropsContext<{ filter: string }>,
-// ) => {
-//   const ssg = createSSGHelpers({
-//     router: appRouter,
-//     ctx: await createContext(),
-//   });
-//
-//   await ssg.fetchQuery('post.all');
-//
-//   return {
-//     props: {
-//       trpcState: ssg.dehydrate(),
-//       filter: context.params?.filter ?? 'all',
-//     },
-//     revalidate: 1,
-//   };
-// };
